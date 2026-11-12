@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flavoria Restaurant</title>
+<meta name="description" content="Flavoria Restaurant. Fresh food, warm ambience. Order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Great+Vibes&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--or:#e8630a;--or2:#c9510a;--gr:#2b3a10;--ink:#1c2418;--mut:#6b6f66;--cream:#fdf6ee;--line:#efe7dc;--wa:#25d366}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:Poppins,sans-serif;color:var(--ink);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.wrap{width:min(1200px,92%);margin:auto}
+h1,h2,h3,.serif{font-family:'Playfair Display',serif;font-weight:600}
+.script{font-family:'Great Vibes',cursive;color:var(--or);font-weight:400}
+.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.i.f{fill:currentColor;stroke:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 26px;border-radius:10px;font-weight:600;font-size:14px;border:2px solid var(--or);cursor:pointer;transition:.2s;background:none;color:var(--or)}
+.btn.fill{background:var(--or);color:#fff}.btn.fill:hover{background:var(--or2);border-color:var(--or2)}
+.btn.out:hover{background:var(--cream)}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}.btn.wa:hover{background:#1da851;border-color:#1da851}
+.btn.dark{background:var(--gr);border-color:var(--gr);color:#fff;padding:11px 20px;font-size:13px}
+.btn.sm{padding:9px 16px;font-size:13px}
+:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.eyebrow{color:var(--or);font-size:13px;font-weight:600;letter-spacing:.4px}
+.ph{background:linear-gradient(135deg,#f3dcc3,#e6c6a2)}
+
+.top{background:var(--gr);color:#f3f0e4;font-size:12.5px}
+.top .wrap{display:flex;justify-content:space-between;gap:14px;padding:8px 0;flex-wrap:wrap}
+.top span,.top a{display:flex;align-items:center;gap:7px}
+.top .i{width:15px;height:15px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--or)}
+.logo .i{width:38px;height:38px;stroke-width:1.5}
+.logo b{display:block;font-family:'Great Vibes';font-weight:400;font-size:34px;line-height:1;color:var(--ink)}
+.logo small{display:block;font-size:9px;letter-spacing:4px;text-align:center;font-weight:500}
+nav ul{display:flex;gap:32px;list-style:none;font-size:13px;font-weight:500}
+nav a{padding:6px 0;border-bottom:2px solid transparent;transition:.2s}
+nav a:hover,nav a.on{color:var(--or);border-color:var(--or)}
+.hr{display:flex;align-items:center;gap:10px}
+.cartbtn{position:relative;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+.cartbtn:hover{border-color:var(--or);color:var(--or)}
+.cartbtn em{position:absolute;top:-4px;right:-4px;background:var(--or);color:#fff;font-style:normal;font-size:11px;font-weight:600;min-width:19px;height:19px;border-radius:10px;display:none;place-items:center;padding:0 5px}
+.burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;color:var(--ink)}
+
+.hero{background:radial-gradient(circle at 78% 45%,#fff 0,#fbf3e8 100%);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:30px;padding:56px 0 64px}
+.hero h1{font-size:clamp(42px,6vw,68px);line-height:1.07;margin:14px 0 20px}
+.hero h1 .script{font-size:1.18em}
+.hero p{color:var(--mut);max-width:420px;margin-bottom:30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
+.perks{display:flex;gap:26px;flex-wrap:wrap}
+.perk{display:flex;align-items:center;gap:11px;font-size:12.5px;line-height:1.3}
+.perk span{width:46px;height:46px;border:1px solid #f0d4bb;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--or)}
+.plate{position:relative}
+.plate img{border-radius:50%;aspect-ratio:1;object-fit:cover;width:100%;box-shadow:0 34px 70px rgba(60,40,10,.2);border:14px solid #fff}
+.badge{position:absolute;top:3%;right:2%;width:118px;height:118px;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center;box-shadow:0 12px 32px rgba(0,0,0,.12);font-size:12px;line-height:1.25;color:var(--mut)}
+.badge b{font-family:'Playfair Display';font-size:30px;display:block;color:var(--ink);line-height:1.1}
+
+section{padding:84px 0}
+.about .wrap{display:grid;grid-template-columns:1.1fr 1fr .55fr;gap:48px;align-items:center}
+.pic{position:relative}
+.pic img{border-radius:26px;aspect-ratio:4/3.3;object-fit:cover;width:100%}
+.years{position:absolute;right:-18px;bottom:-18px;background:var(--or);color:#fff;border-radius:18px;padding:18px 22px;text-align:center;font-size:13px;line-height:1.3;box-shadow:0 14px 30px rgba(232,99,10,.35)}
+.years .i{width:26px;height:26px;margin:0 auto 4px}
+.years b{font-family:'Playfair Display';font-size:34px;display:block;line-height:1.1}
+.about h2{font-size:40px;line-height:1.18;margin:10px 0 14px}
+.about h2 .script{font-size:1.2em}
+.about p{color:var(--mut);margin-bottom:22px}
+.sig{font-size:38px;margin-bottom:16px}
+.feats{display:grid;gap:22px}
+.feat{display:flex;align-items:center;gap:14px;font-size:13.5px;font-weight:500;line-height:1.3}
+.feat span{width:56px;height:56px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--or);flex:none}
+
+.menu{background:#fffdfa;border-top:1px solid var(--line)}
+.sechead{text-align:center;margin-bottom:30px}
+.sechead h2{font-size:36px}
+.sechead p{color:var(--mut);max-width:520px;margin:6px auto 0}
+.tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+.tab{padding:9px 20px;border-radius:30px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:500;cursor:pointer;transition:.2s}
+.tab:hover{border-color:var(--or)}
+.tab.on{background:var(--or);color:#fff;border-color:var(--or)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.card:hover{box-shadow:0 18px 40px rgba(60,40,10,.1);transform:translateY(-3px)}
+.card .im{aspect-ratio:4/3.2;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.card:hover img{transform:scale(1.05)}
+.card .b{padding:18px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:18px;margin-bottom:4px}
+.card p{font-size:13px;color:var(--mut);flex:1;line-height:1.55}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.price{color:var(--or);font-weight:600;font-size:17px}
+.add{width:38px;height:38px;border-radius:50%;background:var(--gr);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;transition:.2s}
+.add:hover{background:var(--or);transform:rotate(90deg)}
+
+.offer{padding:30px 0 84px}
+.ban{background:var(--gr);color:#fff;border-radius:20px;display:grid;grid-template-columns:1.1fr 1fr 1fr;align-items:stretch;overflow:hidden}
+.ban .t{padding:46px 40px}
+.ban h2{font-size:46px;line-height:1.1;margin:8px 0}
+.ban p{margin-bottom:24px;color:#dfe6cf}
+.ban .eyebrow{color:#ffb27a}
+.ban img{height:100%;min-height:280px;object-fit:cover;width:100%}
+
+.gal{background:var(--cream)}
+.gg{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:14px}
+.gg div{border-radius:16px;overflow:hidden}
+.gg div:nth-child(1){grid-row:span 2}
+.gg div:nth-child(4){grid-column:span 2}
+.gg img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.gg div:hover img{transform:scale(1.06)}
+
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rev{border:1px solid var(--line);border-radius:16px;padding:28px;background:#fff}
+.stars{display:flex;gap:3px;color:#f5a623;margin-bottom:12px}
+.stars .i{width:17px;height:17px}
+.rev p{font-size:14.5px;color:var(--mut);margin-bottom:18px}
+.who{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;line-height:1.3}
+.who img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.who small{display:block;font-weight:400;color:var(--mut)}
+
+.serv{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0}
+.serv .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.s{display:flex;gap:14px;align-items:center;font-size:13px}
+.s .i{width:34px;height:34px;color:var(--or);stroke-width:1.5}
+.s b{display:block;font-size:14px}.s span{color:var(--mut);font-size:12.5px}
+
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.contact h2{font-size:34px;margin-bottom:10px}
+.contact p.l{color:var(--mut);margin-bottom:22px}
+form{display:grid;gap:12px}
+input,textarea{width:100%;padding:14px 16px;border:1px solid #e3d9cc;border-radius:10px;font:inherit;font-size:14px;background:#fff}
+input:focus,textarea:focus{border-color:var(--or);outline:none}
+textarea{min-height:120px;resize:vertical}
+.info{background:var(--cream);border-radius:20px;padding:34px}
+.info .r{display:flex;gap:14px;margin-bottom:18px;font-size:14.5px;align-items:flex-start}
+.info .r .i{color:var(--or);margin-top:3px}
+.info .r b{display:block;font-size:13px;color:var(--mut);font-weight:500}
+
+footer{background:#fffdfa;border-top:1px solid var(--line);padding:54px 0 0;font-size:13px}
+.fg{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr 1.4fr;gap:30px}
+footer h4{font-size:12px;letter-spacing:1.5px;margin-bottom:16px;font-weight:600}
+footer li{list-style:none;margin-bottom:8px;color:var(--mut)}
+footer li a:hover{color:var(--or)}
+footer .desc{color:var(--mut);margin-top:12px;max-width:230px}
+.soc{display:flex;gap:9px;margin-top:16px}
+.soc a{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:.2s}
+.soc a:hover{background:var(--or);color:#fff;border-color:var(--or)}
+.soc .i{width:16px;height:16px}
+.fc li{display:flex;gap:8px}.fc .i{width:15px;height:15px;color:var(--or);margin-top:4px}
+.nl{display:grid;grid-template-columns:1fr auto;gap:8px}
+.nl input{padding:11px 12px;font-size:13px}
+.copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line);margin-top:40px;padding:18px 0;font-size:12px;color:var(--mut)}
+
+.fab{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.28);color:#fff;transition:.2s}
+.fab:hover{transform:scale(1.08)}
+.fab .i{width:32px;height:32px}
+
+.drawer{position:fixed;inset:0;z-index:100;pointer-events:none}
+.drawer .ov{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:.3s}
+.drawer .pn{position:absolute;top:0;right:0;bottom:0;width:min(400px,100%);background:#fff;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column}
+.drawer.open{pointer-events:auto}.drawer.open .ov{opacity:1}.drawer.open .pn{transform:none}
+.pn header{position:static;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;height:auto}
+.pn h3{font-size:22px}
+.items{flex:1;overflow:auto;padding:6px 22px}
+.it{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.it img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.it .n{flex:1;font-size:14px;font-weight:500;line-height:1.3}.it .n small{display:block;color:var(--or);font-weight:600}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:15px;line-height:1}
+.empty{text-align:center;color:var(--mut);padding:50px 10px;font-size:14px}
+.pn footer{padding:18px 22px;background:#fff}
+.tot{display:flex;justify-content:space-between;font-weight:600;margin-bottom:14px;font-size:16px}
+.x{width:40px;height:40px;border:0;background:none;cursor:pointer}
+
+@media(max-width:1000px){
+ .hero .wrap,.about .wrap,.contact .wrap{grid-template-columns:1fr}
+ .hero .wrap{padding-top:34px}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .serv .wrap{grid-template-columns:repeat(2,1fr)}
+ .fg{grid-template-columns:1fr 1fr}
+ .ban{grid-template-columns:1fr 1fr}.ban .t{grid-column:1/-1}.ban img{min-height:200px}
+ .feats{grid-template-columns:repeat(3,1fr)}
+ .revs{grid-template-columns:1fr}
+ .gg{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}.gg div:nth-child(1),.gg div:nth-child(4){grid-column:auto;grid-row:auto}
+ .years{right:10px}
+ .burger{display:grid;place-items:center}
+ nav{position:absolute;top:76px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);display:none}
+ nav.open{display:block}
+ nav ul{flex-direction:column;gap:0;padding:8px 4%}
+ nav li a{display:block;padding:13px 0;border:0}
+ .hr .btn{display:none}
+}
+@media(max-width:580px){
+ section{padding:60px 0}
+ .top .hide{display:none}
+ .grid,.feats,.fg{grid-template-columns:1fr}
+ .badge{width:86px;height:86px;font-size:10px}.badge b{font-size:21px}
+ .about h2,.sechead h2{font-size:30px}.ban h2{font-size:36px}.ban .t{padding:32px 24px}
+ .perks{gap:16px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></symbol>
+<symbol id="leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.500-4.800 10-10 10z"/><path d="M2 21c0-3 1.900-5.500 6-7"/></symbol>
+<symbol id="chef" viewBox="0 0 24 24"><path d="M17 21a1 1 0 001-1v-5.350c0-.457.316-.844.727-1.041a4 4 0 00-2.134-7.589 5 5 0 00-9.186 0 4 4 0 00-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 001 1z"/><path d="M6 17h12"/></symbol>
+<symbol id="heart" viewBox="0 0 24 24"><path d="M19 14c1.500-1.500 3-3.200 3-5.500A5.500 5.500 0 0016.500 3c-1.800 0-3 .5-4.500 2-1.500-1.500-2.700-2-4.500-2A5.500 5.500 0 002 8.500c0 2.300 1.500 4 3 5.500l7 7z"/></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+<symbol id="fork" viewBox="0 0 24 24"><path d="M3 2v7c0 1.100.900 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.100.900 2 2 2h3zm0 0v7"/></symbol>
+<symbol id="truck" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M14 9h4l4 4v4h-2"/><circle cx="7.500" cy="17.500" r="2.500"/><circle cx="17.500" cy="17.500" r="2.500"/></symbol>
+<symbol id="card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol>
+<symbol id="gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 01-2 2H7a2 2 0 01-2-2v-7"/><path d="M7.500 8a2.500 2.500 0 010-5C11 3 12 8 12 8s1-5 4.500-5a2.500 2.500 0 010 5"/></symbol>
+<symbol id="headset" viewBox="0 0 24 24"><path d="M3 14v-2a9 9 0 0118 0v2"/><path d="M21 19a2 2 0 01-2 2h-1v-7h3zM3 19a2 2 0 002 2h1v-7H3z"/></symbol>
+<symbol id="star" viewBox="0 0 24 24"><path d="M12 2l3.100 6.300 6.900 1-5 4.900 1.200 6.800L12 17.800 5.800 21l1.200-6.800-5-4.900 6.900-1z"/></symbol>
+<symbol id="users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.900M16 3.100a4 4 0 010 7.800"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="bag" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></symbol>
+<symbol id="menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+<symbol id="close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+<symbol id="fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></symbol>
+<symbol id="ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.500" cy="6.500" r=".6"/></symbol>
+<symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.030-.967-.273-.099-.471-.148-.670.150-.197.297-.767.966-.940 1.164-.173.199-.347.223-.644.075-.297-.150-1.255-.463-2.390-1.475-.883-.788-1.480-1.761-1.653-2.059-.173-.297-.018-.458.130-.606.134-.133.298-.347.446-.520.149-.174.198-.298.298-.497.099-.198.050-.371-.025-.520-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.500-.669-.510-.173-.008-.371-.010-.570-.010-.198 0-.520.074-.792.372-.272.297-1.040 1.016-1.040 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.200 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.360.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.570-.347m-5.421 7.403h-.004a9.870 9.870 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 01-1.510-5.260c.001-5.450 4.436-9.884 9.888-9.884 2.640 0 5.122 1.030 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.450-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.050 0C5.495 0 .160 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.480-8.413z"/></symbol>
+</defs></svg>
+
+<div class="top"><div class="wrap">
+ <span><svg class="i"><use href="#pin"/></svg>123 Food Street, Flavor Town</span>
+ <span class="hide"><svg class="i"><use href="#clock"/></svg>Mon - Sun: 10:00 AM - 11:00 PM</span>
+ <a href="tel:+212600000000"><svg class="i"><use href="#phone"/></svg>+212 600 000 000</a>
+</div></div>
+
+<header><div class="wrap">
+ <a href="#home" class="logo"><svg class="i"><use href="#chef"/></svg><span><b>Flavoria</b><small>RESTAURANT</small></span></a>
+ <nav id="nav"><ul>
+  <li><a href="#home" class="on">Home</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#menu">Menu</a></li>
+  <li><a href="#offer">Offers</a></li>
+  <li><a href="#gallery">Gallery</a></li>
+  <li><a href="#contact">Contact</a></li>
+ </ul></nav>
+ <div class="hr">
+  <button class="cartbtn" id="openCart" aria-label="Open order"><svg class="i"><use href="#bag"/></svg><em id="cnt">0</em></button>
+  <a class="btn wa sm" data-wa="Hello Flavoria! I would like to place an order."><svg class="i f"><use href="#wa"/></svg>WhatsApp</a>
+  <button class="burger" id="burger" aria-label="Menu"><svg class="i"><use href="#menu"/></svg></button>
+ </div>
+</div></header>
+
+<main>
+<section class="hero" id="home" style="padding:0"><div class="wrap">
+ <div>
+  <span class="eyebrow">GOOD FOOD | GOOD MOOD</span>
+  <h1>Delicious Food<br>for <span class="script">Every Mood</span></h1>
+  <p>Experience a perfect blend of taste, quality, and ambience. Every dish is crafted with love and passion to bring joy to your table.</p>
+  <div class="cta">
+   <a href="#menu" class="btn fill"><svg class="i"><use href="#fork"/></svg>Explore menu</a>
+   <a class="btn wa" data-wa="Hello Flavoria! I have a question."><svg class="i f"><use href="#wa"/></svg>Chat on WhatsApp</a>
+  </div>
+  <div class="perks">
+   <div class="perk"><span><svg class="i"><use href="#leaf"/></svg></span>Fresh<br>Ingredients</div>
+   <div class="perk"><span><svg class="i"><use href="#chef"/></svg></span>Expert<br>Chefs</div>
+   <div class="perk"><span><svg class="i"><use href="#heart"/></svg></span>Made with<br>Love</div>
+  </div>
+ </div>
+ <div class="plate">
+  <img class="ph" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1000&q=80" alt="Grilled salmon with asparagus and tomatoes">
+  <div class="badge"><div><b>30+</b>Signature<br>Dishes</div></div>
+ </div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap">
+ <div class="pic">
+  <img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" alt="Flavoria dining room">
+  <div class="years"><svg class="i"><use href="#users"/></svg><b>10+</b>Years of<br>Experience</div>
+ </div>
+ <div>
+  <span class="eyebrow">WELCOME TO FLAVORIA</span>
+  <h2>Good Food,<br>Good <span class="script">Life</span></h2>
+  <p>At Flavoria, we believe that great food brings people together. Our menu is inspired by global flavors and crafted with the freshest ingredients.</p>
+  <div class="script sig">Flavoria</div>
+  <a href="#contact" class="btn dark">Learn more about us</a>
+ </div>
+ <div class="feats">
+  <div class="feat"><span><svg class="i"><use href="#leaf"/></svg></span>Quality<br>Ingredients</div>
+  <div class="feat"><span><svg class="i"><use href="#chef"/></svg></span>Skilled<br>Chefs</div>
+  <div class="feat"><span><svg class="i"><use href="#home"/></svg></span>Cozy<br>Ambience</div>
+ </div>
+</div></section>
+
+<section class="menu" id="menu"><div class="wrap">
+ <div class="sechead"><span class="eyebrow">CHEF'S SPECIAL</span><h2>Our Popular Dishes</h2><p>Tap the plus button to add a dish, then send your order on WhatsApp.</p></div>
+ <div class="tabs" id="tabs"></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="offer" id="offer"><div class="wrap">
+ <div class="ban">
+  <div class="t">
+   <span class="eyebrow">SPECIAL OFFER</span>
+   <h2>Get 20% Off</h2>
+   <p>On your first order. Just message us on WhatsApp.</p>
+   <a class="btn wa" data-wa="Hello Flavoria! I would like to use the 20% first-order offer."><svg class="i f"><use href="#wa"/></svg>Order now</a>
+  </div>
+  <img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=80" alt="Fresh pizza">
+  <img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=700&q=80" alt="Berry drink">
+ </div>
+</div></section>
+
+<section class="gal" id="gallery"><div class="wrap">
+ <div class="sechead"><span class="eyebrow">OUR GALLERY</span><h2>A taste of Flavoria</h2></div>
+ <div class="gg">
+  <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Plated dish"></div>
+  <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Restaurant interior"></div>
+  <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Fresh bowl"></div>
+  <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80" alt="Dining area"></div>
+  <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Grilled meal"></div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sechead"><span class="eyebrow">TESTIMONIALS</span><h2>What our guests say</h2></div>
+ <div class="revs">
+  <div class="rev"><div class="stars" id="s1"></div><p>The salmon was perfectly cooked and the staff were so kind. Ordering on WhatsApp took less than a minute.</p><div class="who"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="">Sara M.<small>Regular guest</small></div></div>
+  <div class="rev"><div class="stars" id="s2"></div><p>Best ribeye in town. Cozy place, fast delivery, and the lava cake is a must.</p><div class="who"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="">Youssef A.<small>Food lover</small></div></div>
+  <div class="rev"><div class="stars" id="s3"></div><p>Fresh ingredients and great portions. We celebrated my birthday here and everything was perfect.</p><div class="who"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80" alt="">Imane K.<small>Customer</small></div></div>
+ </div>
+</div></section>
+
+<div class="serv"><div class="wrap">
+ <div class="s"><svg class="i"><use href="#truck"/></svg><div><b>Free Delivery</b><span>On orders over $30</span></div></div>
+ <div class="s"><svg class="i"><use href="#card"/></svg><div><b>Easy Payment</b><span>100% secure payment</span></div></div>
+ <div class="s"><svg class="i"><use href="#gift"/></svg><div><b>Best Offers</b><span>Get best deals</span></div></div>
+ <div class="s"><svg class="i"><use href="#headset"/></svg><div><b>Support 24/7</b><span>We are always here</span></div></div>
+</div></div>
+
+<section class="contact" id="contact"><div class="wrap">
+ <div>
+  <h2>Contact us on WhatsApp</h2>
+  <p class="l">Fill in the form and your message opens directly in WhatsApp.</p>
+  <form id="form">
+   <input id="n" placeholder="Your name" required autocomplete="name">
+   <input id="p" placeholder="Phone number" type="tel" autocomplete="tel">
+   <textarea id="m" placeholder="Your message or order" required></textarea>
+   <button class="btn wa" type="submit"><svg class="i f"><use href="#wa"/></svg>Send on WhatsApp</button>
+  </form>
+ </div>
+ <div class="info">
+  <h2>Find us</h2>
+  <div class="r"><svg class="i"><use href="#pin"/></svg><div><b>Address</b>123 Food Street, Flavor Town</div></div>
+  <div class="r"><svg class="i"><use href="#clock"/></svg><div><b>Opening hours</b>Mon - Sun: 10:00 AM - 11:00 PM</div></div>
+  <div class="r"><svg class="i"><use href="#phone"/></svg><div><b>Phone</b>+212 600 000 000</div></div>
+  <div class="r"><svg class="i"><use href="#mail"/></svg><div><b>Email</b>info@flavoria.com</div></div>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="fg">
+  <div><a class="logo" href="#home"><svg class="i"><use href="#chef"/></svg><span><b>Flavoria</b><small>RESTAURANT</small></span></a><p class="desc">Good food, good mood! Visit us and enjoy an unforgettable dining experience.</p>
+   <div class="soc"><a href="#" aria-label="Facebook"><svg class="i"><use href="#fb"/></svg></a><a href="#" aria-label="Instagram"><svg class="i"><use href="#ig"/></svg></a><a data-wa="Hello Flavoria!" aria-label="WhatsApp"><svg class="i f"><use href="#wa"/></svg></a></div></div>
+  <div><h4>QUICK LINKS</h4><ul><li><a href="#about">About Us</a></li><li><a href="#menu">Menu</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact Us</a></li></ul></div>
+  <div><h4>OUR MENU</h4><ul><li>Breakfast</li><li>Lunch</li><li>Dinner</li><li>Desserts</li><li>Drinks</li></ul></div>
+  <div class="fc"><h4>CONTACT INFO</h4><ul><li><svg class="i"><use href="#pin"/></svg>123 Food Street, Flavor Town</li><li><svg class="i"><use href="#phone"/></svg>+212 600 000 000</li><li><svg class="i"><use href="#mail"/></svg>info@flavoria.com</li></ul></div>
+  <div><h4>NEWSLETTER</h4><p class="desc" style="margin:0 0 12px">Subscribe to get the latest updates and offers.</p>
+   <form class="nl" id="nl"><input type="email" placeholder="Enter your email" required><button class="btn fill sm">Subscribe</button></form></div>
+ </div>
+ <div class="copy"><span>© 2026 Flavoria Restaurant. All Rights Reserved.</span><span>Privacy Policy | Terms &amp; Conditions</span></div>
+</div></footer>
+
+<a class="fab" data-wa="Hello Flavoria!" aria-label="Chat on WhatsApp"><svg class="i f"><use href="#wa"/></svg></a>
+
+<div class="drawer" id="drawer"><div class="ov" id="ov"></div>
+ <aside class="pn" aria-label="Your order">
+  <header><h3>Your order</h3><button class="x" id="closeCart" aria-label="Close"><svg class="i"><use href="#close"/></svg></button></header>
+  <div class="items" id="items"></div>
+  <footer><div class="tot"><span>Total</span><span id="tot">$0.00</span></div>
+   <button class="btn wa" id="send" style="width:100%"><svg class="i f"><use href="#wa"/></svg>Send order on WhatsApp</button></footer>
+ </aside>
+</div>
+
+<script>
+// >>> CHANGE THIS to your WhatsApp number: country code + number, no "+" and no spaces. Example (Morocco): 212612345678
+const WA_NUMBER = "212600000000";
+
+const wa = t => "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(t);
+document.querySelectorAll("[data-wa]").forEach(a => { a.href = wa(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
+const ic = (n, c = "") => `<svg class="i ${c}"><use href="#${n}"/></svg>`;
+["s1","s2","s3"].forEach(id => document.getElementById(id).innerHTML = ic("star","f").repeat(5));
+
+const U = id => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=700&q=80`;
+const dishes = [
+ {id:1,c:"Mains",n:"Creamy Alfredo Pasta",d:"Rich and creamy white sauce with mushrooms and herbs.",p:14.99,i:"photo-1551183053-bf91a1d81141"},
+ {id:2,c:"Mains",n:"Grilled Ribeye Steak",d:"Juicy grilled steak served with seasonal vegetables.",p:24.99,i:"photo-1600891964092-4316c288032e"},
+ {id:3,c:"Salads",n:"Quinoa & Avocado Salad",d:"Healthy quinoa, avocado, cherry tomatoes and greens.",p:12.99,i:"photo-1512621776951-a57141f2eefd"},
+ {id:4,c:"Desserts",n:"Chocolate Lava Cake",d:"Warm chocolate cake with a gooey center.",p:8.99,i:"photo-1624353365286-3f8d62daad51"},
+ {id:5,c:"Mains",n:"Grilled Salmon",d:"Fresh salmon with asparagus, tomatoes and lemon.",p:21.99,i:"photo-1467003909585-2f8a72700288"},
+ {id:6,c:"Mains",n:"Margherita Pizza",d:"Stone-baked, fresh mozzarella, basil and tomato.",p:13.99,i:"photo-1565299624946-b28f40a0ae38"},
+ {id:7,c:"Salads",n:"Garden Fresh Bowl",d:"Crisp seasonal greens with house vinaigrette.",p:9.99,i:"photo-1546069901-ba9599a7e63c"},
+ {id:8,c:"Drinks",n:"Berry Fresh Cooler",d:"Blackberry and mint cooler served over ice.",p:5.99,i:"photo-1536935338788-846bb9981813"}
+];
+const cats = ["All","Mains","Salads","Desserts","Drinks"];
+const grid = document.getElementById("grid"), tabs = document.getElementById("tabs");
+let cat = "All";
+function renderTabs(){ tabs.innerHTML = cats.map(c => `<button class="tab ${c===cat?"on":""}" data-c="${c}">${c}</button>`).join(""); }
+function renderGrid(){
+  grid.innerHTML = dishes.filter(x => cat==="All" || x.c===cat).map(x =>
+   `<article class="card"><div class="im ph"><img loading="lazy" src="${U(x.i)}" alt="${x.n}"></div>
+    <div class="b"><h3>${x.n}</h3><p>${x.d}</p>
+    <div class="row"><span class="price">$${x.p.toFixed(2)}</span>
+    <button class="add" data-id="${x.id}" aria-label="Add ${x.n} to order">${ic("plus")}</button></div></div></article>`).join("");
+}
+tabs.addEventListener("click", e => { const b = e.target.closest(".tab"); if(!b) return; cat = b.dataset.c; renderTabs(); renderGrid(); });
+renderTabs(); renderGrid();
+
+// ---- order cart ----
+let cart = {};
+const $ = id => document.getElementById(id);
+function renderCart(){
+  const ids = Object.keys(cart); let total = 0, count = 0;
+  $("items").innerHTML = ids.length ? ids.map(id => {
+    const d = dishes.find(x => x.id == id), q = cart[id]; total += d.p*q; count += q;
+    return `<div class="it"><img class="ph" src="${U(d.i)}" alt=""><div class="n">${d.n}<small>$${(d.p*q).toFixed(2)}</small></div>
+      <div class="qty"><button data-m="${id}" aria-label="Less">-</button><span>${q}</span><button data-p="${id}" aria-label="More">+</button></div></div>`;
+  }).join("") : `<div class="empty">Your order is empty.<br>Add some dishes from the menu.</div>`;
+  $("tot").textContent = "$" + total.toFixed(2);
+  const c = $("cnt"); c.textContent = count; c.style.display = count ? "grid" : "none";
+  $("send").disabled = !count; $("send").style.opacity = count ? 1 : .5;
+}
+grid.addEventListener("click", e => {
+  const b = e.target.closest(".add"); if(!b) return;
+  cart[b.dataset.id] = (cart[b.dataset.id]||0) + 1; renderCart(); toast("Added to your order");
+});
+$("items").addEventListener("click", e => {
+  const m = e.target.dataset.m, p = e.target.dataset.p;
+  if (p) cart[p]++;
+  if (m) { cart[m]--; if (cart[m] <= 0) delete cart[m]; }
+  renderCart();
+});
+const drawer = $("drawer");
+const openC = () => drawer.classList.add("open"), closeC = () => drawer.classList.remove("open");
+$("openCart").onclick = openC; $("closeCart").onclick = closeC; $("ov").onclick = closeC;
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeC(); });
+$("send").onclick = () => {
+  const lines = Object.keys(cart).map(id => { const d = dishes.find(x => x.id == id); return `- ${cart[id]} x ${d.n} ($${(d.p*cart[id]).toFixed(2)})`; });
+  window.open(wa("Hello Flavoria! I would like to order:\n" + lines.join("\n") + "\nTotal: " + $("tot").textContent), "_blank");
+};
+renderCart();
+
+function toast(t){
+  let el = document.querySelector(".toast");
+  if(!el){ el = document.createElement("div"); el.className = "toast"; el.style.cssText = "position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#1c2418;color:#fff;padding:11px 20px;border-radius:30px;font-size:13px;z-index:120;opacity:0;transition:.3s"; document.body.appendChild(el); }
+  el.textContent = t; el.style.opacity = 1; clearTimeout(el._t); el._t = setTimeout(() => el.style.opacity = 0, 2000);
+}
+
+$("form").addEventListener("submit", e => {
+  e.preventDefault();
+  const n = $("n").value, p = $("p").value, m = $("m").value;
+  window.open(wa(`Hello Flavoria! My name is ${n}${p ? " (" + p + ")" : ""}.\n${m}`), "_blank");
+});
+$("nl").addEventListener("submit", e => { e.preventDefault(); e.target.reset(); toast("Thanks for subscribing!"); });
+
+const nav = $("nav");
+$("burger").onclick = () => nav.classList.toggle("open");
+nav.addEventListener("click", e => { if (e.target.tagName === "A") nav.classList.remove("open"); });
+const links = [...nav.querySelectorAll("a")];
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) links.forEach(l => l.classList.toggle("on", l.getAttribute("href") === "#" + en.target.id));
+}), {rootMargin: "-45% 0px -50% 0px"});
+["home","about","menu","offer","gallery","contact"].forEach(id => io.observe($(id)));
+</script>
+</body>
+</html>
